@@ -1,0 +1,171 @@
+@import "./colors.scss"
+@import "./fonts.scss"
+
+.login
+    max-height: 99vh
+    max-width: 99vw
+    overflow: hidden
+
+    .background
+        position: absolute 
+        top: 0
+        left: 0
+        
+        .corner
+            @media ( min-width: 1080px )
+                position: absolute
+                top: 0
+                left: 0
+                background: url('../assets/corner.svg') no-repeat
+                height: 460px
+                width: 460px
+
+            @media ( max-width: 1080px )
+                background: transparent   
+
+            .logo
+                position: relative
+                top: 20px
+                left: 20px
+                background: url('../assets/logo.svg') no-repeat
+                @media ( min-width: 1080px )
+                    height: 60px
+                    width: 60px    
+                @media ( max-width: 1080px )
+                    height: 40px
+                    width: 40px    
+    
+            .textoDeBienvenida
+                color: white
+                font-family: $font-Montserrat
+                font-size: 2rem
+                @media ( min-width: 1080px )
+                    margin-left: 3vw
+                    margin-top: 3vw
+                @media ( max-width: 1080px )
+                    display: none
+
+        .bubblesContainer
+            position: absolute
+            margin: 0
+            padding: 0
+            top: 0
+            left: 0
+            height: 100vh
+            width: 100vw
+            overflow: hidden
+
+            .bubbles
+                position: absolute
+                background: url('../assets/bubble.svg') no-repeat
+                
+            .bubbles:nth-child(1)
+                @media ( min-width: 1080px )
+                    width: 25em
+                    height: 25em
+                    top: 55vh
+                    left: 50vw
+                    animation: bubble11 both 12s infinite 
+                @media ( max-width: 1080px )
+                    width: 20em
+                    height: 20em
+                    top: 55vh
+                    left: 70vw
+                    animation: bubble12 both 12s infinite 
+
+            .bubbles:nth-child(2)
+                width: 15em
+                height: 15em
+                z-index: -1
+                @media ( min-width: 1080px )
+                    top: 20vh
+                    left: 40vw
+                    filter: brightness(0.9);
+                    animation: bubble21 20s infinite 
+                @media ( max-width: 1080px )
+                    z-index: -1
+                    top: -10vh
+                    left: -10vw
+                    animation: bubble22 8s infinite 
+
+            .bubbles:nth-child(3)
+                @media ( min-width: 1080px )
+                    width: 20em
+                    height: 20em
+                    top: 75vh
+                    left: 10vw
+                    animation: bubble31 10s infinite 
+                @media ( max-width: 1080px )
+                    width: 30em
+                    height: 30em
+                    top: 70vh
+                    left: -30vw
+                    animation: bubble32 8s infinite 
+
+@keyframes bubble11
+    0% 
+        top: 20vh
+
+    50% 
+        top: 55vh
+    
+    100% 
+        top: 20vh
+            
+@keyframes bubble12
+    0% 
+        top: 0vh
+
+    50% 
+        top: 70vh
+    
+    100% 
+        top: 0vh
+
+    
+@keyframes bubble21
+    0% 
+        top: 40vh
+
+    50% 
+        top: 20vh
+    
+    100% 
+        top: 40vh
+            
+@keyframes bubble22
+    0% 
+        top: -20vh
+
+    50% 
+        top: -5vh
+    
+    100% 
+        top: -20vh
+
+
+@keyframes bubble31
+    0% 
+        top: 55vh
+        left: 10vw
+
+    50% 
+        top: 90vh
+        left: 10vw
+    
+    100% 
+        top: 55vh
+        left: 10vw
+            
+@keyframes bubble32
+    0% 
+        top: 90vh
+        left: -10vw
+
+    50% 
+        top: 70vh
+        left: -20vw
+    
+    100% 
+        top: 90vh
+        left: -10vw

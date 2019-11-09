@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import FromLogin from '../Components/FormLogin';
+import '../Styles/loginPage.sass';
 
 export default class LoginView extends Component {
     render() {
       return (
-        <div>
+        <div className="login">
           <div className="background">
             <div className="corner">
               <div className="logo"></div>
@@ -17,11 +18,13 @@ export default class LoginView extends Component {
                 </p>
               </div>
             </div>
-            <div className="bubblesGrande"></div>
-            <div className="bubblesMediana"></div>
-            <div className="bubblesChica"></div>
+            <div className="bubblesContainer">  
+              <div className="bubbles"></div>
+              <div className="bubbles"></div>
+              <div className="bubbles"></div>
+            </div>
           </div>
-          <FromLogin />
+          <FromLogin className="formulario"/>
         </div>
       );
     }
