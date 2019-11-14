@@ -3,18 +3,21 @@ import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import LoginSchema from "../schemas/loginSchema";
 import '../Styles/FormLogin.sass';
+import Session from '../model/Session';
+import LoginController from '../api/LoginController';
 
-export default class FormLogin extends Component{    
+export default class FromRegister extends Component{    
 
-    handleSubmit(values) {
-        localStorage.setItem('session', JSON.stringify(values));
+    handleSubmit(session) {
+        const loginController = new LoginController();
+        loginController.register(session);
     }
     
     render() {
         return(
             <div className="formularioLogin">
                 <h1> Login </h1>
-                <Formik  initialValues={{email:"", password:""}} validationSchema={LoginSchema} onSubmit={this.handleSubmit} >
+                <Formik  initialValues={new Session("","")} validationSchema={LoginSchema} onSubmit={this.handleSubmit} >
                     { Formulario } 
                 </Formik>
             </div>
@@ -51,21 +54,12 @@ function Formulario({ touched, errors }) {
                 name="password"
             />
 
-            <Link to="/" className="register btn btn-outline-primary">
-            Register
-            </Link>
-
-
             <button
                 type="submit"
                 className="btn btn-light"
             >
             Sing-in
             </button>
-
-            <Link to="/" className="linkToGetMyPass mx-auto">
-            forgot your password?
-            </Link>
 
         </Form>
     );

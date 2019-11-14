@@ -4,7 +4,6 @@ import LoginView from './Views/Login';
 import CashinView from './Views/Cashin';
 import CashoutView from './Views/Cashout';
 import ProfileView from './Views/Profile';
-import RegisterView from './Views/Register';
 import HomeView from './Views/Home';
 import NotFound from './Views/NotFound';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -41,14 +40,11 @@ export default class App extends Component {
                 <Route path="/cashout" component={CashoutView} />
                 <Route path="/profileview" component={ProfileView} />
                 <Route path="/profileview/edit" component={ProfileView} />
-                <Route path="/register" component={RegisterView} />
-                <Route path="/" exact component={HomeView} /> 
+                <Route path="/" component={HomeView} /> 
                 <Route component={NotFound} />
               </>
             :
-              <>
-                <Route component={LoginView} /> 
-              </>
+              <LoginView/>
           }
         </Switch>
       </Router>
