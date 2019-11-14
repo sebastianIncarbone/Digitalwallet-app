@@ -43,7 +43,7 @@ export default class App extends Component {
                 <Route path="/profileview/edit" component={ProfileView} />
                 <Route path="/register" component={RegisterView} />
                 <Route path="/" exact component={HomeView} /> 
-                <Route component={NotFound} />
+                {/*<Route path="*"component={NotFound} />*/}
               </>
             :
               <>
