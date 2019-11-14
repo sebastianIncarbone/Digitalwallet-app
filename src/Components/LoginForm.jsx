@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import LoginSchema from "../schemas/loginSchema";
 import '../Styles/FormLogin.sass';
-import { Session } from "inspector";
+import Session from "../model/Session";
 import LoginController from '../api/LoginController';
 
 export default class FormLogin extends Component{    

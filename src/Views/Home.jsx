@@ -4,7 +4,6 @@ import NavBar from '../Components/NavBar';
 import TransfersTable from '../Components/TransfersTable';
 import '../Styles/Home.sass';
 
-
 export default class HomeView extends Component {      
    render() {
       return (
