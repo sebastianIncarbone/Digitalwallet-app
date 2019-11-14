@@ -4,10 +4,14 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import LoginSchema from "../schemas/loginSchema";
 import '../Styles/FormLogin.sass';
 
+
+
 export default class FormLogin extends Component{    
 
     handleSubmit(values) {
         localStorage.setItem('session', JSON.stringify(values));
+        this.props.history.push('/home');
+
     }
     
     render() {
