@@ -12,8 +12,12 @@ export default class NavBar extends Component{
         
     render() {
         return (
+          
          <div className="container">
-          <table className="table">
+           <div class>Historial</div>
+
+          
+          <table className="table border rounded">
           
           <thead>
             <tr>

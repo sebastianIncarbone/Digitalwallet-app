@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ModalLogOut from '../Components/ModalLogOut';
 import '../Styles/FormLogin.sass';
 
 
@@ -25,10 +26,10 @@ export default class NavBar extends Component{
               <li className="nav-item">
                 <a className="nav-link" href="/profileview">Profile</a>
               </li>
+              
               </ul>
-                <span className="navbar-text">
-                  Welcome to DigitalWallet
-                </span>
+              <ModalLogOut></ModalLogOut>
+                
               </div>
             </nav>
             </div>

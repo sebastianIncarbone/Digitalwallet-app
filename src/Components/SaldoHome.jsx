@@ -9,8 +9,8 @@ export default class SaldoHome extends Component{
     render() {
         return (
             <div className="container">
-                <nav className="navbar navbar-expand-lg navbar-light bg-white">
-                <span className="navbar-brand">Saldo de: $300</span>
+                <nav className="border-top">
+                <h1 className="navbar-brand">Saldo: $300</h1>
                 </nav>
             </div>
             );
