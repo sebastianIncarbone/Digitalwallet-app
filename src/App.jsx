@@ -4,7 +4,6 @@ import LoginView from './Views/Login';
 import CashinView from './Views/Cashin';
 import CashoutView from './Views/Cashout';
 import ProfileView from './Views/Profile';
-import RegisterView from './Views/Register';
 import HomeView from './Views/Home';
 import NotFound from './Views/NotFound';
 import TransaccionsView from './Views/Transaccions'
@@ -42,16 +41,19 @@ export default class App extends Component {
                 <Route path="/cashout" component={CashoutView} />
                 <Route path="/profileview" component={ProfileView} />
                 <Route path="/profileview/edit" component={ProfileView} />
+<<<<<<< HEAD
+                <Route path="/" component={HomeView} /> 
+                <Route component={NotFound} />
+=======
                 <Route path="/register" component={RegisterView} />
                 <Route path="/transaccions" component={TransaccionsView} />
                 <Route path="/" exact component={HomeView} /> 
 
                 {/*<Route path="*"component={NotFound} />*/}
+>>>>>>> 2b1639c32792083bb7d2a7d9d661266e78422def
               </>
             :
-              <>
-                <Route component={LoginView} /> 
-              </>
+              <LoginView/>
           }
         </Switch>
       </Router>

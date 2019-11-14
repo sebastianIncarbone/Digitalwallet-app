@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import FromLogin from '../Components/FormLogin';
+import { Route } from 'react-router-dom';
+import FromLogin from '../Components/LoginForm';
+import FromForgotPass from '../Components/ForgotPassForm';
+import FromRegiter from '../Components/RegisterForm';
 import '../Styles/loginPage.sass';
 
 export default class LoginView extends Component {
@@ -24,7 +27,11 @@ export default class LoginView extends Component {
               <div className="bubbles"></div>
             </div>
           </div>
-          <FromLogin className="formulario"/>
+          <div className="formulario">
+            <Route path="/ForgotPass" component={FromForgotPass} />
+            <Route path="/Register" exact component={FromRegiter} /> 
+            <Route component={FromLogin} />
+          </div>
         </div>
       );
     }
