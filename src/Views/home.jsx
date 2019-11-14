@@ -1,21 +1,19 @@
 import React, {Component} from 'react';
+import SaldoHome from '../Components/SaldoHome';
+import NavBar from '../Components/NavBar';
+import TransfersTable from '../Components/TransfersTable';
+import '../Styles/Home.sass';
 
-export default class CashinView extends Component {
-    constructor(props) {
-      super(props);
-      
-      this.state = {isToggleOn: true};
-  
-      this.handleClick = this.handleClick.bind(this);
 
-    }
-  
-    handleClick() {
-    }
-  
-    render() {
+export default class HomeView extends Component {      
+   render() {
       return (
-        <h1>Wellcome! </h1>
-      );
-    }
-  }
+              <div className ="container">    
+                <div className="logo"></div>
+                     <NavBar></NavBar>
+                     <SaldoHome></SaldoHome>
+                     <TransfersTable></TransfersTable>
+              </div>              
+        );
+      }
+}
