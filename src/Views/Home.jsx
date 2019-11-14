@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class CashinView extends Component {
+export default class HomeView extends Component {
     constructor(props) {
       super(props);
       

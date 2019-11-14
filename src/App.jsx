@@ -7,6 +7,7 @@ import ProfileView from './Views/Profile';
 import RegisterView from './Views/Register';
 import HomeView from './Views/Home';
 import NotFound from './Views/NotFound';
+import TransaccionsView from './Views/Transaccions'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class App extends Component {
@@ -42,8 +43,8 @@ export default class App extends Component {
                 <Route path="/profileview" component={ProfileView} />
                 <Route path="/profileview/edit" component={ProfileView} />
                 <Route path="/register" component={RegisterView} />
+                <Route path="/transaccions" component={TransaccionsView} />
                 <Route path="/" exact component={HomeView} /> 
-                <Route component={NotFound} />
               </>
             :
               <>

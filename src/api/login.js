@@ -1,10 +1,19 @@
 import axios from 'axios';
 
-export default {
+//const server = 'http://localhost:7000';
 
-    loginUser: (email, password) => {
-        
-    }   
+const server = 'https://randomuser.me/'
 
+const request = (type, path, body) => axios
+  .request({ url: `${server}${path}`, method: type, data: body })
+  .then(req => req.data);
 
-}
+export const getUser = request('get', '/api')
+
+export const getAccount = cvu => request('get', `/account/${cvu}`);
+
+export const getTransaccions = cvu => request('get', `/transaccions/${cvu}`);
+
+export const getCVUByEmail = email => request('get', `/getCVU/${email}`);
+
+export default { loginUser: (email, password) => {}  }
