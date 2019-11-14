@@ -40,14 +40,8 @@ export default class App extends Component {
                 <Route path="/cashout" component={CashoutView} />
                 <Route path="/profileview" component={ProfileView} />
                 <Route path="/profileview/edit" component={ProfileView} />
-<<<<<<< HEAD
-                <Route path="/" component={HomeView} /> 
-                <Route component={NotFound} />
-=======
-                <Route path="/register" component={RegisterView} />
                 <Route path="/" exact component={HomeView} /> 
                 {/*<Route path="*"component={NotFound} />*/}
->>>>>>> 2b1639c32792083bb7d2a7d9d661266e78422def
               </>
             :
               <LoginView/>

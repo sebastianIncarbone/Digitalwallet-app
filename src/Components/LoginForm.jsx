@@ -4,21 +4,14 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import LoginSchema from "../schemas/loginSchema";
 import '../Styles/FormLogin.sass';
 import { Session } from "inspector";
-
-
+import LoginController from '../api/LoginController';
 
 export default class FormLogin extends Component{    
 
-<<<<<<< HEAD:src/Components/LoginForm.jsx
     handleSubmit(session) {
         const loginController = new LoginController();
         loginController.loginUser(session);
-=======
-    handleSubmit(values) {
-        localStorage.setItem('session', JSON.stringify(values));
         this.props.history.push('/home');
-
->>>>>>> 2b1639c32792083bb7d2a7d9d661266e78422def:src/Components/FormLogin.jsx
     }
     
     render() {
