@@ -45,6 +45,8 @@ export default class App extends Component {
                 <Route path="/register" component={RegisterView} />
                 <Route path="/transaccions" component={TransaccionsView} />
                 <Route path="/" exact component={HomeView} /> 
+
+                {/*<Route path="*"component={NotFound} />*/}
               </>
             :
               <>
