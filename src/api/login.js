@@ -1,14 +1,12 @@
 import axios from 'axios';
 
-//const server = 'http://localhost:7000';
-
-const server = 'https://randomuser.me/'
+const server = 'http://localhost:7000';
 
 const request = (type, path, body) => axios
   .request({ url: `${server}${path}`, method: type, data: body })
   .then(req => req.data);
 
-export const getUser = request('get', '/api')
+export const getUser = request('get', '/')
 
 export const getAccount = cvu => request('get', `/account/${cvu}`);
 

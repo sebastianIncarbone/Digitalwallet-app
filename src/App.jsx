@@ -32,7 +32,7 @@ export default class App extends Component {
   render(){
     
     return (
-      <Router>
+      <Router forceRefresh={true}>
         <Switch>
           {
             this.state.user? 
@@ -43,10 +43,11 @@ export default class App extends Component {
                 <Route path="/profileview/edit" component={ProfileView} />
                 <Route path="/transaccions" component={TransaccionsView} />
                 <Route path="/" exact component={HomeView} /> 
+
                 {/*<Route path="*"component={NotFound} />*/}
               </>
             :
-              <LoginView/>
+              <LoginView />
           }
         </Switch>
       </Router>

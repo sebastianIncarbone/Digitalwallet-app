@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import FromLogin from '../Components/LoginForm';
-import FromForgotPass from '../Components/ForgotPassForm';
-import FromRegiter from '../Components/RegisterForm';
+import { Route, Switch } from 'react-router-dom'
+import FormLogin from '../Components/LoginForm';
+import FormPass from '../Components/ForgotPassForm';
+import FormRegister from '../Components/RegisterForm';
 import '../Styles/loginPage.sass';
 
 export default class LoginView extends Component {
@@ -28,9 +28,11 @@ export default class LoginView extends Component {
             </div>
           </div>
           <div className="formulario">
-            <Route path="/ForgotPass" component={FromForgotPass} />
-            <Route path="/Register" exact component={FromRegiter} /> 
-            <Route component={FromLogin} />
+            <Switch>
+              <Route path="/register" component={FormRegister} />
+              <Route path="/forgetPassword" component={FormPass} />
+              <Route path="/" component={FormLogin} />
+            </Switch>
           </div>
         </div>
       );

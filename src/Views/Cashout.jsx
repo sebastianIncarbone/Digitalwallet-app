@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { getUser } from '../api/login.js';
-import Cashout from '../Styles/Cashout.sass'
+import Cashout from '../Styles/Cashout.sass';
+import NavBar from '../Components/NavBar';
+import '../Styles/Home.sass';
 
 
 export default class CashoutView extends Component {
@@ -16,7 +18,9 @@ export default class CashoutView extends Component {
     render(){
         return( 
             <div className="container box">
-            <form>
+                <div className="logo"></div>
+                <NavBar></NavBar>
+                <form>
                 <h3>Cash in</h3>
                 <div className="form-group">
                     <label className="label" for="AmountField">Amount</label>
@@ -42,7 +46,7 @@ export default class CashoutView extends Component {
                     <button type="confirm" className="btn btn-success btn-lg btn-space">Confirm</button>
                 </div>
             </form>
-        </div>     
+            </div>     
         );
     }
 }

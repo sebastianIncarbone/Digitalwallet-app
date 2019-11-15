@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { getUser } from '../api/login.js';
-import Cashin from '../Styles/Cashin.sass'
+import Cashin from '../Styles/Cashin.sass';
+import NavBar from '../Components/NavBar';
+import '../Styles/Home.sass';
 
 
 export default class CashinView extends Component {
@@ -16,7 +18,9 @@ export default class CashinView extends Component {
     render(){
         return(       
             <div className="container box">
-            <form>
+                <div className="logo"></div>
+                <NavBar></NavBar>
+                <form>
                 <h3>Transfer</h3>
                 <div className="form-group">
                     <label className="label" for="CVU">CVU</label>
@@ -31,7 +35,7 @@ export default class CashinView extends Component {
                     <button type="confirm" className="btn btn-success btn-lg btn-space">Confirm</button>
                 </div>
             </form>
-        </div>
+            </div>
         );
     }
 }

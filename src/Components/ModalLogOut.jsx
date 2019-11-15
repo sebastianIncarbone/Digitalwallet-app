@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import Swal from "sweetalert2";
-import { Link } from 'react-router-dom'; 
-
+import LoginController from '../api/LoginController';
 
 
 export default class ModalLogOut extends Component{    
 
-    removeLocalStorage = () => (
-        localStorage.clear()
-        
-    )
+    removeLocalStorage () {
+        const loginController = new LoginController();
+        loginController.logoutUser();
+        window.location.reload();
+    }
 
     openModal = () => {
     
@@ -20,7 +20,7 @@ export default class ModalLogOut extends Component{
                 confirmButtonText: 'Yes',
                 showCancelButton: true,
                 showCloseButton: true,
-                preConfirm:this.removeLocalStorage,
+                preConfirm: this.removeLocalStorage,
                 showConfirmButton: true,
                 showLoaderOnConfirm: true
               },

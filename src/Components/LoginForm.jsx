@@ -2,18 +2,40 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom'; 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import LoginSchema from "../schemas/loginSchema";
-import '../Styles/FormLogin.sass';
 import Session from "../model/Session";
 import LoginController from '../api/LoginController';
+import '../Styles/FormLogin.sass';
+import Swal from 'sweetalert2';
+
 
 export default class FormLogin extends Component{    
+    constructor(props){
+        super(props);
+    }
 
-    handleSubmit(session) {
+    handleSubmit = (session) => {
         const loginController = new LoginController();
-        loginController.loginUser(session);
-        this.props.history.push('/home');
+        loginController.loginUser(session).then(() => {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Login successful',
+                showConfirmButton: false,
+                timer: 1000
+            })
+            this.props.history.push('/')
+        })
+        .catch(err => {
+            Swal.fire({
+                icon: 'error',
+                title: 'User not found',
+                text: err
+            });
+        })
     }
     
+    
+
     render() {
         return(
             <div className="formularioLogin">
