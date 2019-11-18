@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
-import FormLogin from '../Components/LoginForm';
-import FormPass from '../Components/ForgotPassForm';
-import FormRegister from '../Components/RegisterForm';
+import FormLogin from '../Components/FormLogin';
+import FormPass from '../Components/FormForgotPass';
+import FormRegister from '../Components/FormRegister';
 import '../Styles/loginPage.sass';
 
 export default class LoginView extends Component {

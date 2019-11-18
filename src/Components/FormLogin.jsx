@@ -15,23 +15,23 @@ export default class FormLogin extends Component{
 
     handleSubmit = (session) => {
         const loginController = new LoginController();
-        loginController.loginUser(session).then(() => {
+        loginController.loginUser(session)
+        .then(() => {
             Swal.fire({
                 position: 'center',
                 icon: 'success',
                 title: 'Login successful',
                 showConfirmButton: false,
                 timer: 1000
-            })
-            this.props.history.push('/')
+            }).then(() => this.props.history.push('/'));
         })
         .catch(err => {
             Swal.fire({
                 icon: 'error',
-                title: 'User not found',
+                title: 'Login error',
                 text: err
             });
-        })
+        });
     }
     
     
@@ -48,7 +48,7 @@ export default class FormLogin extends Component{
     }   
 }
 
-function Formulario({ touched, errors }) {
+function Formulario() {
     return(
         <Form className="bodyFormularioDeIngreso">
             <label >Email</label>
@@ -88,7 +88,7 @@ function Formulario({ touched, errors }) {
             Sing-in
             </button>
 
-            <Link to="/forgotPass" className="linkToGetMyPass mx-auto">
+            <Link to="/forgetPassword" className="linkToGetMyPass mx-auto">
             forgot your password?
             </Link>
 

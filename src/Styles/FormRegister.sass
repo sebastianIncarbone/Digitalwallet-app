@@ -1,0 +1,63 @@
+@import "./colors.scss"
+@import "./fonts.scss"
+
+.formularioRegister
+    width: 320px
+    height: 84vh
+    color: white
+    background: $color5
+    border-radius: 1.2rem
+    border-color: $color4
+    border-style: solid
+    border-width: 12px
+    position: absolute
+    @media ( min-width: 1080px )
+        top: 10vh
+        right: 5vw          
+    @media ( max-width: 1080px )
+        top: 10vh
+        left: 40vw         
+    @media ( max-width: 720px )
+        top: 10vh
+        left: 25vw         
+    @media ( max-width: 420px )
+        top: 10vh
+        left: 5vw
+
+    h2
+        margin-top: 12px
+        text-align: center  
+        font-family: $font-Roboto
+        font-weight: 600
+        font-size: 1.3rem
+    
+    .bodyFormularioDeRegister
+        width: 300px
+        position: absolute
+        top: 4vh
+        padding: .6em
+        display: flex
+        flex-direction: column
+        margin-top: 0vh
+        
+        label
+            margin-left: 1em
+            font-family: $font-Roboto
+            font-weight: 600
+            font-size: 1rem
+            
+        input
+            padding-left: .9em
+            padding-right: .9em
+
+        .register
+            margin-top: 5vh
+
+        .linkToGetMyPass
+            margin-top: 5vh
+
+        a
+            color: white
+            font-family: $font-Roboto
+            font-size: .9rem
+        

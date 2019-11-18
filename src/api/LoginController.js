@@ -1,32 +1,26 @@
 import axios from 'axios';
 
 export default class LoginController {
+    
     constructor(){
         this.url = 'http://localhost:7000';
+        this.URLlogin = this.url + '/login';
+        this.URLregister = this.url + '/register';
+        this.URLforgetPass = this.url + '/forgetPass';
     }
+
     loginUser(session) {
-        return axios.post(this.url + '/login', { mail: session.email, password: session.password} )
-            .then(response=> localStorage.setItem('session', JSON.stringify(response.data)))
-        //const response = await ;
-        
+        return axios.post(this.URLlogin, session)
+                .then( response => localStorage.setItem('session', JSON.stringify(response.data)));
     }
     
-    async register(session) {   
-        const usuarioHardCodeado = {
-            "tarjetaDeCredito": "0123456789",
-            "nombre": "sebastian",
-            "apellido": "incarbone",
-            "mail": "sebastianincarbonew@gmail.com",
-            "password": "seba",
-            "esAdmin": true,
-            "cvu": null
-        };
-        const response = await axios.post(this.url + '/register', usuarioHardCodeado );
-        localStorage.setItem('session', JSON.stringify(response.data));
+    register(session) { 
+        return axios.post(this.URLregister, session )
+            .then( response => localStorage.setItem('session', JSON.stringify(response.data)));
     }   
 
-    forgetPassword(session) {
-        //let user = await axios('localhost:7000/login', { user: session.user, password: session.password} );
+    forgetPassword(mail) {
+        return axios.post(this.URLforgetPass, mail);
     }
     
     logoutUser() {
