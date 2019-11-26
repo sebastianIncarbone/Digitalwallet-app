@@ -33,23 +33,22 @@ export default class App extends Component {
     
     return (
       <Router forceRefresh={true}>
-        <Switch>
           {
             this.state.user? 
               <> 
-                <Route path="/cashin" component={CashinView} />
-                <Route path="/cashout" component={CashoutView} />
-                <Route path="/profileview" component={ProfileView} />
-                <Route path="/profileview/edit" component={ProfileView} />
-                <Route path="/transaccions" component={TransaccionsView} />
-                <Route path="/" exact component={HomeView} /> 
-
-                {/*<Route path="*"component={NotFound} />*/}
+                <Switch>
+                    <Route path="/cashin" component={CashinView} />
+                    <Route path="/cashout" component={CashoutView} />
+                    <Route path="/profileview" component={ProfileView} />
+                    <Route path="/profileview/edit" component={ProfileView} />
+                    <Route path="/transaccions" component={TransaccionsView} />
+                    <Route path="/" exact component={HomeView} /> 
+                    <Route component={NotFound} />
+                </Switch>
               </>
             :
               <LoginView />
           }
-        </Switch>
       </Router>
     );
   }

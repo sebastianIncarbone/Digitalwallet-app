@@ -20,7 +20,7 @@ export default class LoginController {
     }   
 
     forgetPassword(mail) {
-        return axios.post(this.URLforgetPass, mail);
+        return axios.get(this.URLforgetPass + "/" + mail );
     }
     
     logoutUser() {

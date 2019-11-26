@@ -26,10 +26,11 @@ export default class FormLogin extends Component{
             }).then(() => this.props.history.push('/'));
         })
         .catch(err => {
+
             Swal.fire({
                 icon: 'error',
                 title: 'Login error',
-                text: err
+                text: err.response.data
             });
         });
     }
@@ -40,7 +41,11 @@ export default class FormLogin extends Component{
         return(
             <div className="formularioLogin">
                 <h1> Login </h1>
-                <Formik  initialValues={new Session("","")} validationSchema={LoginSchema} onSubmit={this.handleSubmit} >
+                <Formik  
+                initialValues={new Session("","")} 
+                validationSchema={LoginSchema} 
+                onSubmit={this.handleSubmit} 
+                >
                     { Formulario } 
                 </Formik>
             </div>

@@ -14,7 +14,7 @@ export default class TableTransaccions extends Component {
     componentWillMount(){
         getUser.then(result => {
             this.setState({ transaccions : result.results['0'] });
-            console.log(result.results['0']);
+            //console.log(result.results['0']);
         }).catch(e => {this.setState({ error: e.message })})
 
     }

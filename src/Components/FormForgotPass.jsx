@@ -12,24 +12,22 @@ export default class FormForgotPassword extends Component{
         super(props);
     }
 
-    handleSubmit = (email) => {
+    handleSubmit = (user) => {
         const loginController = new LoginController();
-        loginController.forgetPassword(email)
+        loginController.forgetPassword(user.email)
             .then((response) => {
-                console.log(response);
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Su contraseña es',
-                    showConfirmButton: false,
-                    timer: 1000
-                }).then( () => this.props.history.push('/'));
+                    title: 'Your password is: ' + response.data,
+                    showConfirmButton: false
+                });
             })
             .catch(err => {
                 Swal.fire({
                     icon: 'error',
                     title: 'User not found',
-                    text: err
+                    text: err.response.data
                 });
             })
     }

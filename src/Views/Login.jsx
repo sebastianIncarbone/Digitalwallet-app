@@ -31,7 +31,7 @@ export default class LoginView extends Component {
             <Switch>
               <Route path="/register" component={FormRegister} />
               <Route path="/forgetPassword" component={FormPass} />
-              <Route path="/" component={FormLogin} />
+              <Route component={FormLogin} />
             </Switch>
           </div>
         </div>

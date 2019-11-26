@@ -12,7 +12,7 @@ export default class FromRegister extends Component{
         super(props);
     }
 
-    handleSubmit(session) {
+    handleSubmit = (session) => {
         const loginController = new LoginController();
         loginController.register(session)
             .then(() => {
@@ -22,14 +22,16 @@ export default class FromRegister extends Component{
                     title: 'Register successful',
                     showConfirmButton: false,
                     timer: 1000
-                }).then(()=>this.props.history.push('/'));
+                }).then(() => this.props.history.push('/'));
             })
             .catch(err => {
+
                 Swal.fire({
                     icon: 'error',
                     title: 'Register error',
-                    text: err
+                    text: err.response.data
                 });
+            
             });
     }
     
