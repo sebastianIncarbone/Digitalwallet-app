@@ -8,7 +8,7 @@ export default class TableTransaccions extends Component {
 
     constructor(props){
         super(props);
-        this.state = { transaccions: []};
+        this.state = { transaccions: sessionStorage.cvu};
     }
 
     componentWillMount(){
