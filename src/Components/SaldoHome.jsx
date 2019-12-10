@@ -18,7 +18,7 @@ export default class SaldoHome extends Component{
     }
     handleSaldo = () => {
         const userController = new UserController();
-        return(userController.getSaldo(JSON.parse(localStorage.getItem('session')).CVU))
+        //return(userController.getSaldo(JSON.parse(localStorage.getItem('session')).CVU))
     }
         
     render() {

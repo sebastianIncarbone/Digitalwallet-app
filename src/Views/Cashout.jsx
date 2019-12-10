@@ -1,14 +1,24 @@
 import React, {Component} from 'react';
-import { getUser } from '../api/login.js';
-import Cashout from '../Styles/Cashout.sass';
+//import { getUser } from '../api/login.js';
 import NavBar from '../Components/NavBar';
+import '../Styles/Cashout.sass';
 import '../Styles/Home.sass';
 
 
-export default class CashoutView extends Component {
+export default class CashinView extends Component {
 
     constructor(props){
         super(props);
+        this.handleConfirm = this.handleConfirm.bind(this)
+        this.handleCancel = this.handleCancel.bind(this)
+    }
+
+    handleConfirm(){
+
+    }
+
+    handleCancel(){
+
     }
 
     componentWillMount(){
@@ -16,37 +26,49 @@ export default class CashoutView extends Component {
     }
 
     render(){
-        return( 
-            <div className="container box">
+        return(       
+            <div className="container">
                 <div className="logo"></div>
                 <NavBar></NavBar>
-                <form>
-                <h3>Cash in</h3>
-                <div className="form-group">
-                    <label className="label" for="AmountField">Amount</label>
-                    <input type="cvu" className="form-control" id="amount" aria-describedby="AmountField" placeholder="amount"/>
+                <div className="box">
+                    <form>
+                        <h3>Transfer</h3>
+                        <div className="form-group">
+                            <label className="label" for="CVU">CVU</label>
+                            <input 
+                                type="cvu" 
+                                className="form-control" 
+                                id="cvu" 
+                                placeholder="number cvu"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label className="label" for="AmountField">Amount</label>
+                            <input 
+                                type="cvu" 
+                                className="form-control" 
+                                id="amount" 
+                                aria-describedby="AmountField" 
+                                placeholder="amount"
+                            />
+                        </div>
+                        <div>
+                            <button 
+                                type="cancel" 
+                                className="btn btn-danger btn-lg btn-magin-left btn-space" 
+                                onClick={this.handleCancel}>
+                                    Cancel
+                            </button>
+                            <button 
+                                type="confirm" 
+                                className="btn btn-success btn-lg btn-space"
+                                onClick={this.handleConfirm}>
+                                    Confirm
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div >
-                    <input type="checkbox" className="form-check-input inputCheck" id="CheckCreditCard"/>
-                    <label className="form-check-label labelCheck" for="CheckCreditCard">Credit card</label>
-                    <input type="checkbox" className="form-check-input inputCheck" id="CheckDebitCard"/>
-                    <label className="form-check-label labelCheck" for="CheckDebitCard">Debit card</label>
-                </div>
-                <div className="form-group">
-                    <label className="label" for="CardNumber">Card Number</label>
-                    <input type="cardNumber" className="form-control" id="CardNum" placeholder="number"/>
-                    <label className="label" for="FullName">Full Name</label>
-                    <input type="FullName" className="form-control" id="FullName" placeholder="Enter Full Name"/>
-                </div>
-                <div>
-
-                </div>
-                <div>
-                    <button type="cancel" className="btn btn-danger btn-lg btn-magin-left btn-space">Cancel</button>
-                    <button type="confirm" className="btn btn-success btn-lg btn-space">Confirm</button>
-                </div>
-            </form>
-            </div>     
+            </div>
         );
     }
 }

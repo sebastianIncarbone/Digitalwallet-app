@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getTransaccions } from "../api/login";
+import { getTransaccions } from "../api/login.js";
 
 
 
