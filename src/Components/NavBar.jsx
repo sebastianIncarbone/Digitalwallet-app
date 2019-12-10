@@ -10,6 +10,7 @@ export default class NavBar extends Component{
     render() {
         return (
         <div className="container">
+          <div className="logo"></div>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand" href="/">Home</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">

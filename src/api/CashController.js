@@ -17,7 +17,7 @@ export default class CashController {
                 })
     }
     
-    async getSaldo(cvu) {
+    cashin(cvu) {
         return axios.get(this.URLAccount + cvu)
                 .then(result => {
                     return new Promise(resolve => {
