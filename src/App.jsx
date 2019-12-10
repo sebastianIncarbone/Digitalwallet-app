@@ -34,7 +34,7 @@ export default class App extends Component {
     return (
       <Router forceRefresh={true}>
           {
-            this.state.user? 
+            //this.state.user? 
               <> 
                 <Switch>
                     <Route path="/cashin" component={CashinView} />
@@ -46,8 +46,8 @@ export default class App extends Component {
                     <Route component={NotFound} />
                 </Switch>
               </>
-            :
-            <LoginView />
+            //:
+            //<LoginView />
           }
       </Router>
     );

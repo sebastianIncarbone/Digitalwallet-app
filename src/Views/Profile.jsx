@@ -7,7 +7,6 @@ export default class ProfileView extends Component {
     render(){
         return(
         <div className="container">
-            <div className="logo"></div>
             <NavBar></NavBar>
         </div>
         );

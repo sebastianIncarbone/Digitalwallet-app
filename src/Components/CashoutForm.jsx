@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-//import { getUser } from '../api/login.js';
 import '../Styles/Cashin.sass';
 import RadioCard from './RadioCard';
 
@@ -7,10 +6,9 @@ export default class CashoutForm extends Component {
 
     constructor(props){
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this)
         this.handleCancel = this.handleCancel.bind(this)
-        // this.onlynumber = this.onlynumber.bind(this)
-        // this.onlyletters = this.onlyletters.bind(this)
+        this.onlynumber = this.onlynumber.bind(this)
+        this.onlyletters = this.onlyletters.bind(this)
     }
 
     onlynumber(e){ 
@@ -30,12 +28,8 @@ export default class CashoutForm extends Component {
          }
     }
 
-    handleSubmit(e){
-        e.preventDefault() 
-    }
-
-    handleCancel(){
-
+    handleCancel(e){
+        e.preventDefault()
     }
 
     componentWillMount(){
@@ -43,10 +37,10 @@ export default class CashoutForm extends Component {
     }
 
     render(){
-        const { onChange, form } = this.props
+        const { onChange, onSubmit, form } = this.props
         return(       
             <div className="container box">
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={onSubmit}>
                     <h3>Transfer</h3>
                     <div className="form-group">
                         <label className="label" for="CVU">CVU</label>
@@ -75,18 +69,17 @@ export default class CashoutForm extends Component {
                         />
                     </div>
                     <div>
-                        <button 
-                            type="cancel" 
-                            className="btn btn-danger btn-lg btn-magin-left btn-space" 
-                            onClick={this.handleCancel}>
-                                Cancel
-                        </button>
-                        <button 
-                            type="confirm" 
+                        <input 
+                            type="button"
+                            className="btn btn-danger btn-lg btn-magin-left btn-space"
+                            value="Cancel"
+                            onClick={this.handleCancel}
+                        />
+                        <input 
+                            type="submit"
                             className="btn btn-success btn-lg btn-space"
-                            onClick={this.handleConfirm}>
-                                Confirm
-                        </button>
+                            value= "Confirm"
+                        />
                     </div>
                 </form>
             </div>
