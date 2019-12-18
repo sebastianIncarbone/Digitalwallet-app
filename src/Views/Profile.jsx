@@ -18,6 +18,7 @@ export default class ProfileView extends Component {
 
     render() {
         return (
+          <body margin="10px">
           <>
           <NavBar></NavBar>
           <div className="container emp-profile">
@@ -25,7 +26,7 @@ export default class ProfileView extends Component {
                 <div className="row">
                     <div className="col-md-4">
                         <div className="profile-img" class="container">
-                            <img src={avatar} className="rounded-circle" alt=" " width="128" height="128"/>
+                            <img  style={{ margin: '10px'}} src={avatar} className="rounded-circle" alt=" " width="128" height="128"/>
                         </div>
                     </div>
                     <div className="col-md-6">
@@ -100,6 +101,7 @@ export default class ProfileView extends Component {
             </div>
             
           </>
+          </body>
         );
       }
 }

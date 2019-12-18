@@ -24,8 +24,8 @@ export default class SaldoHome extends Component{
     render() {
         return (
             <div className="container">
-                <nav className="border-top">
-        <h1 className="navbar-brand">Balance: $ {this.state.saldo}</h1>
+                <nav   className="border-top">
+        <h1 style={{ margin: '10px'}} className="navbar-brand">Balance: $ {this.state.saldo}</h1>
                 </nav>
             </div>
             );
