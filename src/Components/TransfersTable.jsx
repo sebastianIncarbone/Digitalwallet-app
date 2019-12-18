@@ -33,15 +33,15 @@ componentDidMount(){
           
           
          <div className="container">
-           <div>Historial</div>
+           <div>History</div>
           
           <table className="table border rounded">
           
           <thead>
             <tr>
-              <th scope="col">Fecha</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Dinero</th>
+              <th scope="col">Date</th>
+              <th scope="col">Description</th>
+              <th scope="col">Amount</th>
             </tr>
           </thead>
           <tbody>

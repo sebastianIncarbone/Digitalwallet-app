@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import '../Styles/FormLogin.sass';
 import request from '../api/UserController'
 
-
-
 export default class SaldoHome extends Component{    
     constructor(props){
         super(props);
@@ -27,7 +25,7 @@ export default class SaldoHome extends Component{
         return (
             <div className="container">
                 <nav className="border-top">
-        <h1 className="navbar-brand">Saldo: $ {this.state.saldo}</h1>
+        <h1 className="navbar-brand">Balance: $ {this.state.saldo}</h1>
                 </nav>
             </div>
             );
