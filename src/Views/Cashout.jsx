@@ -46,7 +46,7 @@ export default class CashoutView extends Component {
                 showConfirmButton: false,
                 timer: 1500
             })
-            this.props.history.push('/home')
+            this.props.history.push('/')
         }).catch(error => {
             Swal.fire({
                 icon: 'error',
