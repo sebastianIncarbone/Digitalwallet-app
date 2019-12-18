@@ -14,7 +14,7 @@ export default class CashoutView extends Component {
         super(props);
         this.state = {
             form:{
-                cvuFROM:localStorage.getItem('session'),
+                cvuFROM:JSON.parse(localStorage.getItem('session')).CVU,
                 cvuTO: "",                
                 amount: 0
             }
