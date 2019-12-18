@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { getTransaccions } from "../api/login.js";
 import request from '../api/UserController'
 
 
@@ -7,23 +6,21 @@ export default class NavBar extends Component{
   constructor(props){
     super(props);
     this.state = { session: localStorage.session,
-                   transaccions: ''
+                   transaccions: []
     }
 }
 
 componentDidMount(){
   request('get', `transaccions/${JSON.parse(localStorage.getItem('session')).CVU}`).then(res => {
-    this.setState({transaccions: res})
-    console.log(this.state.transaccions)
-})
-  
+      this.setState({transaccions : res})
+  })
 }
 
 
 
   translate = (price) => (price < 0) ? 
-                          <td className="text-danger">-${Math.abs(price)} </td> : 
-                          <td className="text-success">${price  }</td>
+                          <span className="text-danger">-${Math.abs(price)} </span> : 
+                          <span className="text-success">${price}</span>
                           
   
 
@@ -31,12 +28,12 @@ componentDidMount(){
         
     render() {
       
-      console.log(this.state)
+      console.log(this.state.transaccions)
         return (
           
           
          <div className="container">
-           <div class>Historial</div>
+           <div>Historial</div>
           
           <table className="table border rounded">
           
@@ -44,28 +41,18 @@ componentDidMount(){
             <tr>
               <th scope="col">Fecha</th>
               <th scope="col">Descripción</th>
-              <th scope="col">Dinero {this.session}</th>
+              <th scope="col">Dinero</th>
             </tr>
           </thead>
           <tbody>
-            {this.state.transactions > 0 ? (
-            this.state.transactions.map(transaction => (
-             <tr key={transaction.id}>
-              <td>{transaction.fecha}</td>
+            {this.state.transaccions.length > 0 ? (
+            this.state.transaccions.map(transaction => (
+             <tr key={transaction.nano}>
+              <td>{`${transaction.dateTime.dayOfMonth}/
+              ${transaction.dateTime.monthValue}/
+              ${transaction.dateTime.year}`} </td>
               <td>{transaction.description}</td>
-              <td>{this.translate(transaction.monto)}</td>
-            {/*
-              <th scope="row">21/10/2019</th>
-              <td>Pago en mercadolibre</td>
-              
-              {this.translate(-100)}}
-              
-            </tr>
-            <tr>
-              <th scope="row">29/10/2019</th>
-              <td>Pago de haberes</td>
-              {this.translate(42000)}
-              */}
+              <td>{this.translate(transaction.amount)}</td>
             </tr>
             ))
           ) : (

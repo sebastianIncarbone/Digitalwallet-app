@@ -31,7 +31,7 @@ export default class ModalLogOut extends Component{
         
     render() {
         return (<div >
-                    <button type="button" onClick={this.openModal} class="btn btn-outline-secondary">
+                    <button type="button" onClick={this.openModal} className="btn btn-outline-secondary">
                             Log out   
                     </button>          
                 </div>
