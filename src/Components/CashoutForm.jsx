@@ -47,7 +47,7 @@ export default class CashoutForm extends Component {
                         <input 
                             type="cvu" 
                             className="form-control" 
-                            name="cvu" 
+                            name="cvuTO" 
                             placeholder="number cvu"
                             maxlength="22"
                             onKeyPress={this.onlynumber}

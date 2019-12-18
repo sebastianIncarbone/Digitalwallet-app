@@ -14,7 +14,8 @@ export default class CashoutView extends Component {
         super(props);
         this.state = {
             form:{
-                cvu:'',
+                cvuFROM:localStorage.getItem('session'),
+                cvuTO: "",                
                 amount: 0
             }
         }
@@ -33,9 +34,6 @@ export default class CashoutView extends Component {
 
     handleSubmit(e){
         const cashController = new CashController()
-        this.setState({
-            loading:true
-        })
         e.preventDefault()
         console.log(this.state.form)
         axios.post(cashController.transfer(), this.state.form)

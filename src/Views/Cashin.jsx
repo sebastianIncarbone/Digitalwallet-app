@@ -14,7 +14,7 @@ export default class CashinView extends Component {
         super(props);
         this.state = {
             form:{
-                cvu:'',//localStorage.getItem(""),
+                cvu:localStorage.getItem("session").cvu,
                 amount: 0
             }
         }

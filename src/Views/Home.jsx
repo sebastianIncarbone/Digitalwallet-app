@@ -8,10 +8,9 @@ export default class HomeView extends Component {
    render() {
       return (
               <div className ="container">    
-                <div className="logo"></div>
-                <NavBar></NavBar>
-                <SaldoHome></SaldoHome>
-                <TransfersTable></TransfersTable>
+                <NavBar/>
+                <SaldoHome/>
+                <TransfersTable/>
               </div>              
         );
       }
