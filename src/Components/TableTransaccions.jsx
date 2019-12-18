@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Styles/TableTransaccions.sass';
-import { getUser } from '../api/login.js';
+import request from '../api/UserController'
 
 
 export default class TableTransaccions extends Component {
@@ -11,12 +11,11 @@ export default class TableTransaccions extends Component {
         this.state = { transaccions: sessionStorage.cvu};
     }
 
-    componentWillMount(){
-        getUser.then(result => {
-            this.setState({ transaccions : result.results['0'] });
-            //console.log(result.results['0']);
-        }).catch(e => {this.setState({ error: e.message })})
-
+    componentDidMount(){
+        request('get', `transaccions/${JSON.parse(localStorage.getItem('session')).CVU}`).then(res => {
+            console.log(res + "asdasdasd")
+		    this.setState({transaccions: res})
+        })
     }
 
     fieldsColumn(fecha, content, price){

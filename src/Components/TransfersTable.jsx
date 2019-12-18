@@ -1,13 +1,22 @@
 import React, { Component } from "react";
 import { getTransaccions } from "../api/login.js";
-
+import request from '../api/UserController'
 
 
 export default class NavBar extends Component{  
   constructor(props){
     super(props);
     this.state = { session: localStorage.session,
-                  transactions: getTransaccions(JSON.parse(localStorage.getItem('session')).CVU)};
+                   transaccions: ''
+    }
+}
+
+componentDidMount(){
+  request('get', `transaccions/${JSON.parse(localStorage.getItem('session')).CVU}`).then(res => {
+    this.setState({transaccions: res})
+    console.log(this.state.transaccions)
+})
+  
 }
 
 

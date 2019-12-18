@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import '../Styles/FormLogin.sass';
-
-import UserController from '../api/UserController'
+import request from '../api/UserController'
 
 
 
@@ -14,11 +13,14 @@ export default class SaldoHome extends Component{
     }
 
     componentDidMount(){
-        this.setState({saldo:this.handleSaldo()})
-    }
+        request('get', `account/${JSON.parse(localStorage.getItem('session')).CVU}`).then(res => {
+            console.log(res)
+		    this.setState({saldo: res})
+    })
+}
     handleSaldo = () => {
-        const userController = new UserController();
-        //return(userController.getSaldo(JSON.parse(localStorage.getItem('session')).CVU))
+        
+        
     }
         
     render() {
