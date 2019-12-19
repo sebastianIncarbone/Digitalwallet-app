@@ -33,7 +33,7 @@ export default class CashinForm extends Component {
     }
 
     render(){
-        const { onChange, onSubmit, form } = this.props
+        const { onChange, onSubmit, form, onChangeCard } = this.props
         return( 
             <div className="container box">
                 <form onSubmit={onSubmit} ref="form">
@@ -57,12 +57,12 @@ export default class CashinForm extends Component {
                     <input 
                         type="text" 
                         className="form-control" 
-                        name="cardNum" 
-                        placeholder="number"
-                        maxlength="16"
+                        name="cardNumber" 
+                        placeholder="Enter card num"
+                        maxlength="40"
                         onKeyPress={this.onlynumber}
-                        // onChange={onChange}
-                        // value={form.cardNum}
+                        onChange={onChangeCard}
+                        value={form.name}
                     />
                     <label className="label" for="FullName">Name</label>
                     <input 

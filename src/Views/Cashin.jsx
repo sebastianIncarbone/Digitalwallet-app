@@ -6,6 +6,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import '../Styles/Cashin.sass';
 import '../Styles/Home.sass';
+import request from '../api/UserController'
 
 
 export default class CashinView extends Component {
@@ -14,15 +15,29 @@ export default class CashinView extends Component {
         super(props);
         this.state = {
             form:{
-                cvu: JSON.parse(localStorage.getItem('session')).CVU,
+                cvuFROM:"",
+                cvuTO: JSON.parse(localStorage.getItem('session')).CVU,                
                 amount: 0
             }
         }
-        this.handleChage = this.handleChage.bind(this)
+        this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChangeCard = this.handleChangeCard.bind(this)
     }
 
-    handleChage(e){
+    handleChangeCard(e){
+        request('get', 'cvuByCard/' + e.target.value).then(res => {
+            this.setState({
+                form:{
+                    ...this.state.form,
+                    cvuFROM: res
+                }
+            })
+    })
+        
+    }
+
+    handleChange(e){
         this.setState({
             form:{
                 ...this.state.form,
@@ -37,6 +52,7 @@ export default class CashinView extends Component {
             loading:true
         })
         e.preventDefault()
+        console.log(this.state.form)
         axios.post(cashController.cashin(), this.state.form)
         .then( response =>{
             console.log(response.data);
@@ -47,7 +63,7 @@ export default class CashinView extends Component {
                 showConfirmButton: false,
                 timer: 1500
             })
-            this.props.history.push('/home')
+            this.props.history.push('/')
         }).catch(error => {
             Swal.fire({
                 icon: 'error',
@@ -62,7 +78,8 @@ export default class CashinView extends Component {
             <div className="container">
                 <NavBar/>
                 <CashinForm 
-                    onChange={this.handleChage}
+                    onChange={this.handleChange}
+                    onChangeCard={this.handleChangeCard}
                     onSubmit={this.handleSubmit}
                     form={this.state.form}
                 />
