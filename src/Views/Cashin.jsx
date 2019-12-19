@@ -14,7 +14,7 @@ export default class CashinView extends Component {
         super(props);
         this.state = {
             form:{
-                cvuFROM:"",
+                cvuFROM: JSON.parse(localStorage.getItem('session')).CVU,
                 cvuTO: JSON.parse(localStorage.getItem('session')).CVU,                
                 amount: 0
             }
@@ -22,19 +22,19 @@ export default class CashinView extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleCancel = this.handleCancel.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChangeCard = this.handleChangeCard.bind(this)
+        //this.handleChangeCard = this.handleChangeCard.bind(this)
     }
 
-    handleChangeCard(e){
-        request('get', 'cvuByCard/' + e.target.value).then(res => {
-            this.setState({
-                form:{
-                    ...this.state.form,
-                    cvuFROM: res
-                }
-            })
-        })  
-    }
+    // handleChangeCard(e){
+    //     request('get', 'cvuByCard/' + e.target.value).then(res => {
+    //         this.setState({
+    //             form:{
+    //                 ...this.state.form,
+    //                 cvuFROM: res
+    //             }
+    //         })
+    //     })  
+    // }
 
     handleChange(e){
         this.setState({
@@ -43,6 +43,7 @@ export default class CashinView extends Component {
                 [e.target.name]: e.target.value
             }
         })
+        console.log(this.state.form)
     }
 
     handleCancel(e){
@@ -81,7 +82,7 @@ export default class CashinView extends Component {
                 <NavBar/>
                 <CashinForm 
                     onChange={this.handleChange}
-                    onChangeCard={this.handleChangeCard}
+                    //onChangeCard={this.handleChangeCard}
                     onCancel={this.handleCancel}
                     onSubmit={this.handleSubmit}
                     form={this.state.form}

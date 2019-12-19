@@ -37,12 +37,11 @@ export default class CashoutView extends Component {
                 [e.target.name]: e.target.value
             }
         })
+        console.log(this.state.form)
     }
 
     handleSubmit(e){
         const cashController = new CashController()
-        e.preventDefault()
-        console.log(this.state.form)
         axios.post(cashController.transfer(), this.state.form)
         .then( response =>{
             console.log(response.data);

@@ -42,18 +42,18 @@ export default class CashinForm extends Component {
                 validationSchema={cashinSchema} 
                 onSubmit={onSubmit} 
             >
-                {Formulario(onChange, onChangeCard, onCancel, form, this.onlyletters, this.onlynumber)} 
+                {Formulario(onChange, onCancel, form, this.onlyletters, this.onlynumber)} 
             </Formik>
             </div>
         );
     }
 }
 
-function  Formulario(onChange, onChangeCard, onCancel, form, onlyletters, onlynumber){
+function  Formulario(onChange, onCancel, form, onlyletters, onlynumber){
     return( 
         <Form >
             <div className="form-group">
-                <label className="label" for="AmountField">Amount</label>
+                <label className="label">Amount</label>
                 <input 
                     type="text" 
                     className="form-control" 
@@ -67,29 +67,27 @@ function  Formulario(onChange, onChangeCard, onCancel, form, onlyletters, onlynu
             </div>
             <RadioCard/>
             <div className="form-group">
-                <label className="label" for="CardNumber">Card Number</label>
+                <label className="label">Card Number</label>
                 <Field
                     type="text" 
                     className="form-control" 
                     name="cardNumber" 
                     placeholder="Enter card number"
-                    maxlength="40"
+                    maxLength="40"
                     onKeyPress={onlynumber}
-                    onChange={onChangeCard}
-                    value={form.name}
                 />
                 <ErrorMessage
                     className="text-danger mx-auto"
                     component="div"
                     name="cardNumber"
                 />
-                <label className="label" for="Name">Name</label>
+                <label className="label">Name</label>
                 <Field 
                     type="text" 
                     className="form-control" 
                     name="name" 
                     placeholder="Enter name"
-                    maxlength="40"
+                    maxLength="40"
                     onKeyPress={onlyletters}
                 />
                 <ErrorMessage

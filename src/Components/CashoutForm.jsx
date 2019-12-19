@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import '../Styles/Cashin.sass';
-import RadioCard from './RadioCard';
+import cashoutSchema from "../schemas/cashoutSchema";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 export default class CashoutForm extends Component {
 
     constructor(props){
         super(props);
     this.onlynumber = this.onlynumber.bind(this)
-    this.onlyletters = this.onlyletters.bind(this)
     }
 
     onlynumber(e){ 
@@ -17,63 +17,72 @@ export default class CashoutForm extends Component {
         }
     }
 
-    onlyletters(e){
-        let key = e.keyCode || e.which;
-        let tecla = String.fromCharCode(key).toLowerCase();
-        let letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
- 
-         if(letras.indexOf(tecla)==-1){
-            e.preventDefault();
-         }
-    }
-
     render(){
         const { onChange, onCancel, onSubmit, form } = this.props
-        return(       
+        return(
             <div className="container box">
-                <form onSubmit={onSubmit}>
-                    <h3>Transfer</h3>
-                    <div className="form-group">
-                        <label className="label" for="CVU">CVU</label>
-                        <input 
-                            type="cvu" 
-                            className="form-control" 
-                            name="cvuTO" 
-                            placeholder="number cvu"
-                            maxlength="22"
-                            onKeyPress={this.onlynumber}
-                            onChange={onChange}
-                            value={form.cvu}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label className="label" for="AmountField">Amount</label>
-                        <input 
-                            type="cvu" 
-                            className="form-control" 
-                            name="amount" 
-                            aria-describedby="AmountField" 
-                            placeholder="amount"
-                            onKeyPress={this.onlynumber}
-                            onChange={onChange}
-                            value={form.amount}
-                        />
-                    </div>
-                    <div>
-                        <input 
-                            type="button"
-                            className="btn btn-danger btn-lg btn-magin-left btn-space"
-                            value="Cancel"
-                            onClick={onCancel}
-                        />
-                        <input 
-                            type="submit"
-                            className="btn btn-success btn-lg btn-space"
-                            value= "Confirm"
-                        />
-                    </div>
-                </form>
+            <h3>Transfer</h3>
+            <Formik  
+                initialValues={{   
+                    cvuTO:"",
+                }}
+                validationSchema={cashoutSchema} 
+                onSubmit={onSubmit} 
+            >
+                {Formulario(onChange, onCancel, form, this.onlynumber)} 
+            </Formik>
             </div>
         );
     }
+}
+
+function  Formulario(onChange, onCancel, form, onlynumber){
+    return(       
+        <Form>
+            <div className="form-group">
+                <label className="label">CVU</label>
+                <Field
+                    type="cvu" 
+                    className="form-control" 
+                    name="cvuTO" 
+                    placeholder="number cvu"
+                    maxLength="22"
+                    onKeyPress={onlynumber}
+                    onChange={onChange}
+                    value={form.cvuTO}
+                />
+                <ErrorMessage
+                    className="text-danger mx-auto"
+                    component="div"
+                    name="cvuTO"
+                />
+            </div>
+            <div className="form-group">
+                <label className="label">Amount</label>
+                <input
+                    type="amount" 
+                    className="form-control" 
+                    name="amount" 
+                    aria-describedby="AmountField" 
+                    placeholder="amount"
+                    onKeyPress={onlynumber}
+                    onChange={onChange}
+                    value={form.amount}
+                />
+            </div>
+            <div>
+                <input 
+                    type="button"
+                    className="btn btn-danger btn-lg btn-magin-left btn-space"
+                    value="Cancel"
+                    onClick={onCancel}
+                />
+                <input 
+                    type="submit"
+                    className="btn btn-success btn-lg btn-space"
+                    value= "Confirm"
+                />
+            </div>
+        </Form>
+    );
 }
