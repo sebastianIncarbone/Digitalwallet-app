@@ -21,7 +21,7 @@ export default class ProfileView extends Component {
           <body margin="10px">
           <>
           <NavBar></NavBar>
-          <div className="container emp-profile">
+          <div className="container emp-profile box">
             <form method="post">
                 <div className="row">
                     <div className="col-md-4">

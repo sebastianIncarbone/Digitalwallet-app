@@ -8,7 +8,6 @@ import '../Styles/Cashin.sass';
 import '../Styles/Home.sass';
 import request from '../api/UserController'
 
-
 export default class CashinView extends Component {
 
     constructor(props){
@@ -21,6 +20,7 @@ export default class CashinView extends Component {
             }
         }
         this.handleChange = this.handleChange.bind(this)
+        this.handleCancel = this.handleCancel.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChangeCard = this.handleChangeCard.bind(this)
     }
@@ -33,8 +33,7 @@ export default class CashinView extends Component {
                     cvuFROM: res
                 }
             })
-    })
-        
+        })  
     }
 
     handleChange(e){
@@ -44,6 +43,11 @@ export default class CashinView extends Component {
                 [e.target.name]: e.target.value
             }
         })
+    }
+
+    handleCancel(e){
+        e.preventDefault()
+        this.props.history.push('/')
     }
 
     handleSubmit(e){
@@ -80,6 +84,7 @@ export default class CashinView extends Component {
                 <CashinForm 
                     onChange={this.handleChange}
                     onChangeCard={this.handleChangeCard}
+                    onCancel={this.handleCancel}
                     onSubmit={this.handleSubmit}
                     form={this.state.form}
                 />

@@ -6,13 +6,8 @@ export default class CashinForm extends Component {
 
     constructor(props){
         super(props);
-    this.handleCancel = this.handleCancel.bind(this)
     this.onlynumber = this.onlynumber.bind(this)
     this.onlyletters = this.onlyletters.bind(this)
-    }
-
-    handleCancel(e){
-        e.preventDefault()
     }
 
     onlynumber(e){ 
@@ -33,7 +28,7 @@ export default class CashinForm extends Component {
     }
 
     render(){
-        const { onChange, onSubmit, form, onChangeCard } = this.props
+        const { onChange, onChangeCard, onCancel, onSubmit, form } = this.props
         return( 
             <div className="container box">
                 <form onSubmit={onSubmit} ref="form">
@@ -72,8 +67,6 @@ export default class CashinForm extends Component {
                         placeholder="Enter name"
                         maxlength="40"
                         onKeyPress={this.onlyletters}
-                        // onChange={onChange}
-                        // value={form.name}
                     />
                 </div>
                 <div>
@@ -83,7 +76,7 @@ export default class CashinForm extends Component {
                         type="button"
                         className="btn btn-danger btn-lg btn-magin-left btn-space"
                         value="Cancel"
-                        onClick={this.handleCancel}
+                        onClick={onCancel}
                     />
                     <input 
                         type="submit"

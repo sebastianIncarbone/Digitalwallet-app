@@ -20,9 +20,16 @@ export default class CashoutView extends Component {
             }
         }
         this.handleChage = this.handleChage.bind(this)
+        this.handleCancel = this.handleCancel.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
+
+    handleCancel(e){
+        e.preventDefault()
+        this.props.history.push('/')
+    }
+    
     handleChage(e){
         this.setState({
             form:{
@@ -62,6 +69,7 @@ export default class CashoutView extends Component {
                 <NavBar/>
                 <CashoutForm
                     onChange={this.handleChage}
+                    onCancel={this.handleCancel}
                     onSubmit={this.handleSubmit}
                     form={this.state.form}
                 />
