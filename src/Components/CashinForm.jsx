@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import '../Styles/Cashin.sass';
 import RadioCard from './RadioCard';
+import cashinSchema from "../schemas/cashinSchema";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 export default class CashinForm extends Component {
 
@@ -29,63 +31,88 @@ export default class CashinForm extends Component {
 
     render(){
         const { onChange, onChangeCard, onCancel, onSubmit, form } = this.props
-        return( 
+        return(
             <div className="container box">
-                <form onSubmit={onSubmit} ref="form">
-                <h3>Cash in</h3>
-                <div className="form-group">
-                    <label className="label" for="AmountField">Amount</label>
-                    <input 
-                        type="text" 
-                        className="form-control" 
-                        name="amount" 
-                        aria-describedby="AmountField" 
-                        placeholder="amount"
-                        onKeyPress={this.onlynumber}
-                        onChange={onChange}
-                        value={form.amount}
-                    />
-                </div>
-                <RadioCard/>
-                <div className="form-group">
-                    <label className="label" for="CardNumber">Card Number</label>
-                    <input 
-                        type="text" 
-                        className="form-control" 
-                        name="cardNumber" 
-                        placeholder="Enter card num"
-                        maxlength="40"
-                        onKeyPress={this.onlynumber}
-                        onChange={onChangeCard}
-                        value={form.name}
-                    />
-                    <label className="label" for="FullName">Name</label>
-                    <input 
-                        type="text" 
-                        className="form-control" 
-                        name="name" 
-                        placeholder="Enter name"
-                        maxlength="40"
-                        onKeyPress={this.onlyletters}
-                    />
-                </div>
-                <div>
-                </div>
-                <div>
-                    <input 
-                        type="button"
-                        className="btn btn-danger btn-lg btn-magin-left btn-space"
-                        value="Cancel"
-                        onClick={onCancel}
-                    />
-                    <input 
-                        type="submit"
-                        className="btn btn-success btn-lg btn-space"
-                        value= "Confirm"
-                    />
-                </div>
-            </form>
+            <h3>Cash in</h3>
+            <Formik  
+                initialValues={{   
+                    cardNumber:"",
+                    name:"",
+                }}
+                validationSchema={cashinSchema} 
+                onSubmit={onSubmit} 
+            >
+                {Formulario(onChange, onChangeCard, onCancel, form, this.onlyletters, this.onlynumber)} 
+            </Formik>
             </div>
         );
     }
+}
+
+function  Formulario(onChange, onChangeCard, onCancel, form, onlyletters, onlynumber){
+    return( 
+        <Form >
+            <div className="form-group">
+                <label className="label" for="AmountField">Amount</label>
+                <input 
+                    type="text" 
+                    className="form-control" 
+                    name="amount" 
+                    aria-describedby="AmountField" 
+                    placeholder="amount"
+                    onKeyPress={onlynumber}
+                    onChange={onChange}
+                    value={form.amount}
+                />
+            </div>
+            <RadioCard/>
+            <div className="form-group">
+                <label className="label" for="CardNumber">Card Number</label>
+                <Field
+                    type="text" 
+                    className="form-control" 
+                    name="cardNumber" 
+                    placeholder="Enter card number"
+                    maxlength="40"
+                    onKeyPress={onlynumber}
+                    onChange={onChangeCard}
+                    value={form.name}
+                />
+                <ErrorMessage
+                    className="text-danger mx-auto"
+                    component="div"
+                    name="cardNumber"
+                />
+                <label className="label" for="Name">Name</label>
+                <Field 
+                    type="text" 
+                    className="form-control" 
+                    name="name" 
+                    placeholder="Enter name"
+                    maxlength="40"
+                    onKeyPress={onlyletters}
+                />
+                <ErrorMessage
+                    className="text-danger mx-auto"
+                    component="div"
+                    name="name"
+                />
+            </div>
+            <div>
+            </div>
+            <div>
+                <input 
+                    type="button"
+                    className="btn btn-danger btn-lg btn-magin-left btn-space"
+                    value="Cancel"
+                    onClick={onCancel}
+                />
+                <input 
+                    type="submit"
+                    className="btn btn-success btn-lg btn-space"
+                    value= "Confirm"
+                />
+            </div>
+    </Form>
+    );
 }

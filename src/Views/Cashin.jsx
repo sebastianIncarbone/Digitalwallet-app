@@ -55,8 +55,6 @@ export default class CashinView extends Component {
         this.setState({
             loading:true
         })
-        e.preventDefault()
-        console.log(this.state.form)
         axios.post(cashController.cashin(), this.state.form)
         .then( response =>{
             console.log(response.data);
