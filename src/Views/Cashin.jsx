@@ -66,8 +66,7 @@ export default class CashinView extends Component {
     }
 
     validinputs(){
-        return this.state.form.amount > 0 && this.state.form.cvuFROM.trim().length > 0
-          && this.state.cardNumber.trim().length > 0
+        return this.state.form.amount > 0 && this.state.cardNumber.trim().length > 0
     }
 
     handleSubmit(e){
