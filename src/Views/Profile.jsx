@@ -90,7 +90,7 @@ export default class ProfileView extends Component {
                                                 <label>CVU</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{JSON.parse(localStorage.getItem('session')).email}</p>
+                                                <p>{JSON.parse(localStorage.getItem('session')).CVU}</p>
                                             </div>
                                         </div>
                                     </div>
