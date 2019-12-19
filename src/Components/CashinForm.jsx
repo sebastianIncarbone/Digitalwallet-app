@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import '../Styles/Cashin.sass';
 import RadioCard from './RadioCard';
-import cashinSchema from "../schemas/cashinSchema";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 export default class CashinForm extends Component {
 

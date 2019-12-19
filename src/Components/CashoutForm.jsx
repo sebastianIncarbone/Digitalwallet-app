@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import '../Styles/Cashin.sass';
-import cashoutSchema from "../schemas/cashoutSchema";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 export default class CashoutForm extends Component {
 
@@ -22,50 +20,30 @@ export default class CashoutForm extends Component {
         return(
             <div className="container box">
             <h3>Transfer</h3>
-            <Formik  
-                initialValues={{   
-                    cvuTO:"",
-                }}
-                validationSchema={cashoutSchema} 
-                onSubmit={onSubmit} 
-            >
-                {formulario(onChange, onCancel, form, this.onlynumber)} 
-            </Formik>
-            </div>
-        );
-    }
-}
-
-function  formulario(onChange, onCancel, form, onlynumber){
-    return(       
-        <Form>
+            <form onSubmit={onSubmit}>
             <div className="form-group">
                 <label className="label">CVU</label>
-                <Field
-                    type="cvu" 
+                <input
+                    type="text" 
                     className="form-control" 
                     name="cvuTO" 
                     placeholder="number cvu"
                     maxLength="22"
-                    onKeyPress={onlynumber}
+                    onKeyPress={this.onlynumber}
                     onChange={onChange}
                     value={form.cvuTO}
-                />
-                <ErrorMessage
-                    className="text-danger mx-auto"
-                    component="div"
-                    name="cvuTO"
                 />
             </div>
             <div className="form-group">
                 <label className="label">Amount</label>
                 <input
-                    type="amount" 
+                    type="number"
+                    min="0" 
                     className="form-control" 
                     name="amount" 
                     aria-describedby="AmountField" 
                     placeholder="amount"
-                    onKeyPress={onlynumber}
+                    onKeyPress={this.onlynumber}
                     onChange={onChange}
                     value={form.amount}
                 />
@@ -83,6 +61,8 @@ function  formulario(onChange, onCancel, form, onlynumber){
                     value= "Confirm"
                 />
             </div>
-        </Form>
-    );
+            </form>
+            </div>
+        );
+    }
 }

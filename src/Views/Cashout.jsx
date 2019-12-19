@@ -40,8 +40,15 @@ export default class CashoutView extends Component {
         console.log(this.state.form)
     }
 
+    validinputs(){
+        return this.state.form.amount > 0 && this.state.form.cvuTO.trim().length > 0
+    }
+
+
     handleSubmit(e){
         const cashController = new CashController()
+        e.preventDefault()
+        if(this.validinputs()){
         axios.post(cashController.transfer(), this.state.form)
         .then( response =>{
             console.log(response.data);
@@ -50,7 +57,7 @@ export default class CashoutView extends Component {
                 icon: 'success',
                 title: 'Your money has been successfully charged',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2000
             })
             this.props.history.push('/')
         }).catch(error => {
@@ -60,6 +67,14 @@ export default class CashoutView extends Component {
                 text: 'Something went wrong!',
               })
         })
+        }
+        else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Invalid fields',
+              })
+        }
     }
 
     render(){

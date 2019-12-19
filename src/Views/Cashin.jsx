@@ -65,28 +65,42 @@ export default class CashinView extends Component {
         this.props.history.push('/')
     }
 
+    validinputs(){
+        return this.state.form.amount > 0 && this.state.form.cvuFROM.trim().length > 0
+          && this.state.cardNumber.trim().length > 0
+    }
+
     handleSubmit(e){
         const cashController = new CashController()
         this.handleCard()
         e.preventDefault()
-        axios.post(cashController.cashin(), this.state.form)
-        .then( response =>{
-            console.log(response.data);
-            Swal.fire({
-                position: 'top-center',
-                icon: 'success',
-                title: 'Your money has been sent successfully',
-                showConfirmButton: false,
-                timer: 1500
+        if(this.validinputs()){
+            axios.post(cashController.cashin(), this.state.form)
+            .then( response =>{
+                console.log(response.data);
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Your money has been sent successfully',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                this.props.history.push('/')
+            }).catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                  })
             })
-            this.props.history.push('/')
-        }).catch(error => {
+        }
+        else {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Something went wrong!',
+                text: 'Invalid fields',
               })
-        })
+        }
     }
 
     render(){
