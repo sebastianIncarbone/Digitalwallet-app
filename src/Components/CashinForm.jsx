@@ -30,37 +30,21 @@ export default class CashinForm extends Component {
     }
 
     render(){
-        const { onChange, onChangeCard, onCancel, onSubmit, form } = this.props
+        const { onChange, onChangeCard, onCancel, onSubmit, form, cardNumber } = this.props
         return(
             <div className="container box">
             <h3>Cash in</h3>
-            <Formik  
-                initialValues={{   
-                    cardNumber:"",
-                    name:"",
-                }}
-                validationSchema={cashinSchema} 
-                onSubmit={onSubmit} 
-            >
-                {Formulario(onChange, onCancel, form, this.onlyletters, this.onlynumber)} 
-            </Formik>
-            </div>
-        );
-    }
-}
-
-function  Formulario(onChange, onCancel, form, onlyletters, onlynumber){
-    return( 
-        <Form >
+            <form  onSubmit={onSubmit}>
             <div className="form-group">
                 <label className="label">Amount</label>
                 <input 
-                    type="text" 
+                    type="number"
+                    min="0" 
                     className="form-control" 
                     name="amount" 
                     aria-describedby="AmountField" 
                     placeholder="amount"
-                    onKeyPress={onlynumber}
+                    onKeyPress={this.onlynumber}
                     onChange={onChange}
                     value={form.amount}
                 />
@@ -68,32 +52,24 @@ function  Formulario(onChange, onCancel, form, onlyletters, onlynumber){
             <RadioCard/>
             <div className="form-group">
                 <label className="label">Card Number</label>
-                <Field
+                <input
                     type="text" 
                     className="form-control" 
                     name="cardNumber" 
                     placeholder="Enter card number"
                     maxLength="40"
-                    onKeyPress={onlynumber}
-                />
-                <ErrorMessage
-                    className="text-danger mx-auto"
-                    component="div"
-                    name="cardNumber"
+                    onChange={onChangeCard}
+                    value={cardNumber}
+                    onKeyPress={this.onlynumber}
                 />
                 <label className="label">Name</label>
-                <Field 
+                <input
                     type="text" 
                     className="form-control" 
                     name="name" 
                     placeholder="Enter name"
                     maxLength="40"
-                    onKeyPress={onlyletters}
-                />
-                <ErrorMessage
-                    className="text-danger mx-auto"
-                    component="div"
-                    name="name"
+                    onKeyPress={this.onlyletters}
                 />
             </div>
             <div>
@@ -111,6 +87,8 @@ function  Formulario(onChange, onCancel, form, onlyletters, onlynumber){
                     value= "Confirm"
                 />
             </div>
-    </Form>
-    );
+            </form>
+            </div>
+        );
+    }
 }

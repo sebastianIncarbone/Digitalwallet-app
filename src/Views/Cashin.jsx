@@ -14,27 +14,41 @@ export default class CashinView extends Component {
         super(props);
         this.state = {
             form:{
-                cvuFROM: JSON.parse(localStorage.getItem('session')).CVU,
+                cvuFROM: "",
                 cvuTO: JSON.parse(localStorage.getItem('session')).CVU,                
-                amount: 0
-            }
+                amount: 0,
+            },
+            cardNumber: "",
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleCancel = this.handleCancel.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-        //this.handleChangeCard = this.handleChangeCard.bind(this)
+        this.handleChangeCard = this.handleChangeCard.bind(this)
+}
+
+    handleResCVUFrom(res) {
+        const updatedForm = {
+            cvuFROM: res,
+            cvuTO: this.state.form.cvuTO,
+            amount: this.state.form.amount,
+        };
+        this.setState({ 
+            form: updatedForm,
+         });
+        console.log(this.state.form);
+    }
+    handleCard(){
+         request('get', 'cvuByCard/' + this.state.cardNumber)
+          .then( (res) => this.handleResCVUFrom(res))
+          .catch( (error) => console.log(error));  
     }
 
-    // handleChangeCard(e){
-    //     request('get', 'cvuByCard/' + e.target.value).then(res => {
-    //         this.setState({
-    //             form:{
-    //                 ...this.state.form,
-    //                 cvuFROM: res
-    //             }
-    //         })
-    //     })  
-    // }
+    handleChangeCard(e){
+        this.setState({
+            cardNumber: e.target.value
+        })
+        console.log(this.state.cardNumber)
+    }
 
     handleChange(e){
         this.setState({
@@ -53,9 +67,8 @@ export default class CashinView extends Component {
 
     handleSubmit(e){
         const cashController = new CashController()
-        this.setState({
-            loading:true
-        })
+        this.handleCard()
+        e.preventDefault()
         axios.post(cashController.cashin(), this.state.form)
         .then( response =>{
             console.log(response.data);
@@ -82,10 +95,11 @@ export default class CashinView extends Component {
                 <NavBar/>
                 <CashinForm 
                     onChange={this.handleChange}
-                    //onChangeCard={this.handleChangeCard}
+                    onChangeCard={this.handleChangeCard}
                     onCancel={this.handleCancel}
                     onSubmit={this.handleSubmit}
                     form={this.state.form}
+                    cardNumber={this.state.cardNumber}
                 />
             </div>
         );

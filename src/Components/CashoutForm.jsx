@@ -29,14 +29,14 @@ export default class CashoutForm extends Component {
                 validationSchema={cashoutSchema} 
                 onSubmit={onSubmit} 
             >
-                {Formulario(onChange, onCancel, form, this.onlynumber)} 
+                {formulario(onChange, onCancel, form, this.onlynumber)} 
             </Formik>
             </div>
         );
     }
 }
 
-function  Formulario(onChange, onCancel, form, onlynumber){
+function  formulario(onChange, onCancel, form, onlynumber){
     return(       
         <Form>
             <div className="form-group">
